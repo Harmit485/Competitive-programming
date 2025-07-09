@@ -1,3 +1,41 @@
+/*
+    Disjoint Set Union (DSU) or Union-Find is a data structure that keeps track
+    of elements partitioned into a number of disjoint (non-overlapping) sets.
+
+    It supports two main operations:
+    - find(u): Determines the representative (leader) of the set containing u
+    - union(u, v): Merges the sets that contain u and v
+
+    It's useful in:
+    - Connected components
+    - Kruskal's algorithm (Minimum Spanning Tree)
+    - Cycle detection in undirected graphs
+    - Grouping elements dynamically in sets
+
+    Optimizations:
+    - Path Compression: Flattens the tree during find operations for faster future queries.
+    - Union by Rank / Size: Always attach the smaller (or lower-rank) tree to the bigger one to keep trees shallow.
+
+    Time Complexity of DSU Operations (Simplified):
+
+    1. Initialization (makeSet): O(n)
+       - Each element is its own parent at the start.
+
+    2. find(u): O(1) on average
+       - Uses path compression to make future lookups faster.
+       - Over time, trees become almost flat.
+
+    3. union(u, v): O(1) on average
+       - With union by rank or size, merging is efficient and trees remain shallow.
+
+    Actual Theoretical Complexity:
+    - Each operation (find or union) runs in O(α(n)) time,
+      where α(n) is the inverse Ackermann function.
+    - α(n) grows extremely slowly and is ≤ 5 for all practical values of n.
+
+    So in practice, DSU operations are considered to run in constant time.
+*/
+
 class DSU {
 private:
     vector<int> parent, rank, size;
