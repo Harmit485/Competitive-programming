@@ -1,3 +1,42 @@
+/*
+    A Segment Tree is a binary tree data structure used for:
+    - Efficient **range queries** (like sum, min, max, GCD, etc.)
+    - Efficient **point updates** (changing a single value in the array)
+
+    Key Idea:
+    - Divide the array into segments and store results for each segment in a tree.
+    - For an array of size `n`, the tree is built in O(n) time and takes about 4 * n space.
+
+    Operations Supported:
+
+    1. Build: O(n)
+       - Construct the tree from the array in a bottom-up manner.
+
+    2. Query(L, R): O(log n)
+       - Query for a result (like sum/min/max) in the range [L, R).
+       - The range is split into log(n) segments at most.
+
+    3. Update(index, value): O(log n)
+       - Update the value at a specific index.
+       - Only the affected path from leaf to root is updated.
+
+    Why use Segment Trees?
+    - Brute force takes O(n) per query/update. Segment Tree reduces it to O(log n).
+    - Great for situations with:
+        → Many range queries
+        → Many point updates
+        → Changing data (unlike prefix sums)
+
+    Notes:
+    - Tree is usually stored as a flat array of size ~2*n or 4*n.
+    - Leaf nodes represent array elements.
+    - Internal nodes store combined results of children.
+
+    Common use cases:
+    - Range sum/min/max/GCD
+    - Real-time analytics over sliding windows
+*/
+
 template<typename T>
 class SegmentTree {
     int n;                      // Size of the input array
